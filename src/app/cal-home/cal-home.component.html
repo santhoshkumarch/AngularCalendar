@@ -1,4 +1,29 @@
+<div class="container">
+<div class="row">
+    <div class="col-md-4 btns">
+        <button mat-raised-button color="primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">Prev</button>&nbsp;
+        <button mat-raised-button color="primary" mwlCalendarToday
+        [(viewDate)]="viewDate">Today</button>&nbsp;
+        <button mat-raised-button color="primary" mwlCalendarNextView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        (viewDateChange)="closeOpenMonthViewDay()">Next</button>
+    </div>
+    <div class="col-md-4">
+        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+      </div>
+</div>
+</div>
+<div class="row">
+    <div class="col-md-12">
 <mwl-calendar-month-view
   [viewDate]="viewDate"
-  [events]="events">
+  [events]="events"
+  [activeDayIsOpen]="activeDayIsOpen"
+  (dayClicked)="dayClicked($event.day)"
+  (eventClicked)="handleEvent('Clicked', $event.event)"
+ (eventTimesChanged)="eventTimesChanged($event)"
+  >
 </mwl-calendar-month-view>
+</div>
+</div>
